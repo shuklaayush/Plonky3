@@ -5,11 +5,11 @@ use serde::{Deserialize, Serialize};
 
 use crate::StarkGenericConfig;
 
-type Com<SC> = <<SC as StarkGenericConfig>::Pcs as Pcs<
+pub type Com<SC> = <<SC as StarkGenericConfig>::Pcs as Pcs<
     <SC as StarkGenericConfig>::Challenge,
     <SC as StarkGenericConfig>::Challenger,
 >>::Commitment;
-type PcsProof<SC> = <<SC as StarkGenericConfig>::Pcs as Pcs<
+pub type PcsProof<SC> = <<SC as StarkGenericConfig>::Pcs as Pcs<
     <SC as StarkGenericConfig>::Challenge,
     <SC as StarkGenericConfig>::Challenger,
 >>::Proof;
