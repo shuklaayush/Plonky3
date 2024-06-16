@@ -13,9 +13,9 @@ use crate::MdsPermutation;
 /// codes are MDS, this is an MDS permutation.
 #[derive(Clone, Debug)]
 pub struct CosetMds<F, const N: usize> {
-    fft_twiddles: Vec<F>,
-    ifft_twiddles: Vec<F>,
-    weights: [F; N],
+    pub fft_twiddles: Vec<F>,
+    pub ifft_twiddles: Vec<F>,
+    pub weights: [F; N],
 }
 
 impl<F, const N: usize> Default for CosetMds<F, N>

@@ -23,7 +23,7 @@ pub fn verify<SC, A>(
 ) -> Result<(), VerificationError>
 where
     SC: StarkGenericConfig,
-    A: Air<SymbolicAirBuilder<Val<SC>>> + for<'a> Air<VerifierConstraintFolder<'a, SC>>,
+    A: Air<SymbolicAirBuilder<SC::Challenge>> + for<'a> Air<VerifierConstraintFolder<'a, SC>>,
 {
     let Proof {
         commitments,
@@ -33,7 +33,8 @@ where
     } = proof;
 
     let degree = 1 << degree_bits;
-    let log_quotient_degree = get_log_quotient_degree::<Val<SC>, A>(air, 0, public_values.len());
+    let log_quotient_degree =
+        get_log_quotient_degree::<SC::Challenge, A>(air, 0, public_values.len());
     let quotient_degree = 1 << log_quotient_degree;
 
     let pcs = config.pcs();
